@@ -1,6 +1,24 @@
 class LabelsController < ApplicationController
   before_action :set_label, only: [:show, :edit, :update, :destroy]
 
+
+	def get_section_and_system
+
+    @class = params[:which]
+
+    if params[:which] == 'C1' || params[:which] == 'C4'
+  		@sections = System.find(params[:id]).sections
+		elsif params[:which] == 'C2' || params[:which] == 'C5'
+      @devices = Section.find(params[:id]).devices
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+	end
+
+
   # GET /labels
   # GET /labels.json
   def index

@@ -29,10 +29,19 @@
     </div>
     <%=f.error_span(:abbr) %>
   </div>
+
+  <div class="form-group">
+    <%= f.label "System", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+  <%= collection_select(:device, :section_id, System.all, :id, :description, {}, { :id => 'C1', class: 'form-control'}) %>
+    </div>
+  </div>
+
+
   <div class="form-group">
     <%= f.label :section_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:section_id, Section.all, :id, :description,{}, :class => 'form-control') %>
+	    <%= f.collection_select(:section_id, Section.all, :id, :description,{},{ :id => 'C2', :class => 'form-control'} ) %>
     </div>
     <%=f.error_span(:section_id) %>
   </div>
@@ -46,3 +55,18 @@
   </div>
 
 <% end %>
+<script>
+$(document).ready( function() {
+    $('#C1').click(function() {
+      $.ajax({
+        url: "<%= get_section_and_system_path %>",
+	data: {
+		id : $('#C1 option:selected').val(),
+		which : "C1",
+	},
+        dataType: "script"
+	});
+    });
+
+    });
+</script>

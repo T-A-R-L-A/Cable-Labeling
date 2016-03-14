@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :labels
   resources :cabinets
   resources :cables
   resources :devices
   resources :sections
   resources :systems
+
+  get 'labels/section_and_system' => 'labels#get_section_and_system', :as => 'get_section_and_system'
+  resources :labels
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

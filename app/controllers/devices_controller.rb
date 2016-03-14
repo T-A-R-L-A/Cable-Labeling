@@ -15,6 +15,7 @@ class DevicesController < ApplicationController
   # GET /devices/new
   def new
     @device = Device.new
+    @sections = Section.all
   end
 
   # GET /devices/1/edit

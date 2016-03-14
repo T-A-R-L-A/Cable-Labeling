@@ -25,21 +25,21 @@
   <div class="form-group">
     <%= f.label :s_system_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:s_system_id, System.all, :id, :description,{}, :class => 'form-control') %>
+      <%= f.collection_select(:s_system_id, System.all, :id, :description,{},{:id => 'C1', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:s_system_id) %>
   </div>
   <div class="form-group">
     <%= f.label :s_section_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:s_section_id, Section.all, :id, :description,{}, :class => 'form-control') %>
+      <%= f.collection_select(:s_section_id, Section.all, :id, :description,{},{:id => 'C2', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:s_section_id) %>
   </div>
   <div class="form-group">
     <%= f.label :s_device_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:s_device_id, Device.all, :id, :abbr,{}, :class => 'form-control') %>
+      <%= f.collection_select(:s_device_id, Device.all, :id, :abbr,{},{ :id => 'C3', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:s_device_id) %>
   </div>
@@ -53,28 +53,28 @@
   <div class="form-group">
     <%= f.label :d_system_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:d_system_id, System.all, :id, :description,{}, :class => 'form-control') %>
+      <%= f.collection_select(:d_system_id, System.all, :id, :description,{}, { :id => 'C4', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:d_system_id) %>
   </div>
   <div class="form-group">
     <%= f.label :d_section_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:s_section_id, Section.all, :id, :description,{}, :class => 'form-control') %>
+      <%= f.collection_select(:d_section_id, Section.all, :id, :description,{}, { :id => 'C5', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:d_section_id) %>
   </div>
   <div class="form-group">
     <%= f.label :d_device_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:d_device_id, Device.all, :id, :abbr,{}, :class => 'form-control') %>
+      <%= f.collection_select(:d_device_id, Device.all, :id, :abbr,{}, { :id => 'C6', :class => 'form-control'}) %>
     </div>
     <%=f.error_span(:d_device_id) %>
   </div>
   <div class="form-group">
     <%= f.label :cabinet_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.collection_select(:cabinet_id, Cabinet.all, :id, :description,{}, :class => 'form-control') %>
+      <%= f.collection_select(:cabinet_id, Cabinet.all, :id, :all_fields,{}, :class => 'form-control') %>
     </div>
     <%=f.error_span(:cabinet_id) %>
   </div>
@@ -88,3 +88,52 @@
   </div>
 
 <% end %>
+<script>
+$(document).ready( function() {
+
+    $('#C1').click(function() {
+      $.ajax({
+        url: "<%= get_section_and_system_path %>",
+	      data: {
+      		id : $('#C1 option:selected').val(),
+      		which : "C1",
+	      },
+        dataType: "script"
+	    });
+    });
+
+    $('#C2').click(function() {
+	    $.ajax({
+        url: "<%= get_section_and_system_path %>",
+        data: {
+      		id : $('#C2 option:selected').val(),
+      		which : "C2",
+        },
+        dataType: "script"
+      });
+    });
+
+    $('#C4').click(function() {
+      $.ajax({
+        url: "<%= get_section_and_system_path %>",
+	      data: {
+      		id : $('#C4 option:selected').val(),
+      		which : "C4",
+	      },
+        dataType: "script"
+	    });
+    });
+
+    $('#C5').click(function() {
+	    $.ajax({
+        url: "<%= get_section_and_system_path %>",
+        data: {
+      		id : $('#C5 option:selected').val(),
+      		which : "C5",
+        },
+        dataType: "script"
+      });
+    });
+});
+
+</script>
