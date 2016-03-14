@@ -6,22 +6,23 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @label.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:s_system_id) %>:</strong></dt>
-  <dd><%= @label.s_system_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:d_system_id) %>:</strong></dt>
-  <dd><%= @label.d_system_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:s_section_id) %>:</strong></dt>
-  <dd><%= @label.s_section_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:d_section_id) %>:</strong></dt>
-  <dd><%= @label.d_section_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:s_device_id) %>:</strong></dt>
-  <dd><%= @label.s_device_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:d_device_id) %>:</strong></dt>
-  <dd><%= @label.d_device_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cable_id) %>:</strong></dt>
-  <dd><%= @label.cable_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cabinet_id) %>:</strong></dt>
-  <dd><%= @label.cabinet_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Source System") %>:</strong></dt>
+  <dd><%= @label.s_system.description %></dd>
+
+  <dt><strong><%= model_class.human_attribute_name("Source Section") %>:</strong></dt>
+  <dd><%= @label.s_section.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Source Device") %>:</strong></dt>
+  <dd><%= @label.s_device.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Destination System") %>:</strong></dt>
+  <dd><%= @label.d_system.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Destination Section") %>:</strong></dt>
+  <dd><%= @label.d_section.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Destination Device") %>:</strong></dt>
+  <dd><%= @label.d_device.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Cable Type") %>:</strong></dt>
+  <dd><%= @label.cable.type %></dd>
+  <dt><strong><%= model_class.human_attribute_name("Cabinet") %>:</strong></dt>
+  <dd><%= @label.cabinet.description %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

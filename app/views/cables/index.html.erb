@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:type) %></th>
       <th><%= model_class.human_attribute_name(:code) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -15,8 +14,7 @@
   <tbody>
     <% @cables.each do |cable| %>
       <tr>
-        <td><%= link_to cable.id, cable_path(cable) %></td>
-        <td><%= cable.type %></td>
+        <td><%= link_to cable.type, cable_path(cable) %></td>
         <td><%= cable.code %></td>
         <td><%=l cable.created_at %></td>
         <td>

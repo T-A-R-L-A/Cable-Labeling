@@ -7,7 +7,7 @@
     <tr>
       <th></th>
       <th><%= model_class.human_attribute_name(:label) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:abbr) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -22,7 +22,7 @@
             /<%= label.cable.code %>/
              <%= label.d_system.code.to_s.rjust(2, '0') +':'+label.d_section.code.to_s.rjust(2, '0')+':'+ label.d_device.abbr.to_s.rjust(2, '0') %>
             .<%= label.cabinet.abbr %></td></b>
-        <td><%= label.description %></td>
+        <td><%= label.s_system.abbr+":"+label.s_section.abbr+":"+label.s_device.abbr+" -> "+label.d_system.abbr+":"+label.d_section.abbr+":"+label.d_device.abbr %> </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_label_path(label), :class => 'btn btn-default btn-xs' %>
