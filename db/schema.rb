@@ -14,69 +14,69 @@
 ActiveRecord::Schema.define(version: 20160314143939) do
 
   create_table "cabinets", force: :cascade do |t|
-    t.string   "description"
-    t.string   "abbr"
-    t.string   "room"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "description", limit: 255
+    t.string   "abbr",        limit: 255
+    t.string   "room",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "cables", force: :cascade do |t|
-    t.string   "type"
-    t.string   "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "type",       limit: 255
+    t.string   "code",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "devices", force: :cascade do |t|
-    t.text     "description"
-    t.string   "abbr"
-    t.integer  "section_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "name"
+    t.text     "description", limit: 65535
+    t.string   "abbr",        limit: 255
+    t.integer  "section_id",  limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "name",        limit: 255
   end
 
-  add_index "devices", ["section_id"], name: "index_devices_on_section_id"
+  add_index "devices", ["section_id"], name: "index_devices_on_section_id", using: :btree
 
   create_table "labels", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "s_system_id"
-    t.integer  "d_system_id"
-    t.integer  "s_section_id"
-    t.integer  "d_section_id"
-    t.integer  "s_device_id"
-    t.integer  "d_device_id"
-    t.integer  "cable_id"
-    t.integer  "cabinet_id"
+    t.string   "description",  limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "s_system_id",  limit: 4
+    t.integer  "d_system_id",  limit: 4
+    t.integer  "s_section_id", limit: 4
+    t.integer  "d_section_id", limit: 4
+    t.integer  "s_device_id",  limit: 4
+    t.integer  "d_device_id",  limit: 4
+    t.integer  "cable_id",     limit: 4
+    t.integer  "cabinet_id",   limit: 4
   end
 
-  add_index "labels", ["d_device_id"], name: "index_labels_on_d_device_id"
-  add_index "labels", ["d_section_id"], name: "index_labels_on_d_section_id"
-  add_index "labels", ["d_system_id"], name: "index_labels_on_d_system_id"
-  add_index "labels", ["s_device_id"], name: "index_labels_on_s_device_id"
-  add_index "labels", ["s_section_id"], name: "index_labels_on_s_section_id"
-  add_index "labels", ["s_system_id"], name: "index_labels_on_s_system_id"
+  add_index "labels", ["d_device_id"], name: "index_labels_on_d_device_id", using: :btree
+  add_index "labels", ["d_section_id"], name: "index_labels_on_d_section_id", using: :btree
+  add_index "labels", ["d_system_id"], name: "index_labels_on_d_system_id", using: :btree
+  add_index "labels", ["s_device_id"], name: "index_labels_on_s_device_id", using: :btree
+  add_index "labels", ["s_section_id"], name: "index_labels_on_s_section_id", using: :btree
+  add_index "labels", ["s_system_id"], name: "index_labels_on_s_system_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
-    t.string   "description"
-    t.string   "abbr"
-    t.integer  "code"
-    t.integer  "system_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "description", limit: 255
+    t.string   "abbr",        limit: 255
+    t.integer  "code",        limit: 4
+    t.integer  "system_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "sections", ["system_id"], name: "index_sections_on_system_id"
+  add_index "sections", ["system_id"], name: "index_sections_on_system_id", using: :btree
 
   create_table "systems", force: :cascade do |t|
-    t.string   "description"
-    t.string   "abbr"
-    t.integer  "code"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "description", limit: 255
+    t.string   "abbr",        limit: 255
+    t.integer  "code",        limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
