@@ -7,7 +7,7 @@
 
 <% if @class == "C2" %>
 	$("#C3").empty()
-					.append("<%= escape_javascript(options_from_collection_for_select(@devices, :id, :abbr)) %>");
+					.append("<%= escape_javascript(options_from_collection_for_select(@devices, :id, :name)) %>");
 <% end %>
 
 <% if @class == "C4" %>
@@ -19,5 +19,5 @@
 
 <% if @class == "C5" %>
 	$("#C6").empty()
-					.append("<%= escape_javascript(options_from_collection_for_select(@devices, :id, :abbr)) %>");
+					.append("<%= escape_javascript(options_from_collection_for_select(@devices, :id, :name)) %>");
 <% end %>
